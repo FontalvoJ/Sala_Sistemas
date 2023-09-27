@@ -27,6 +27,31 @@ public class app_inventariosala {
 
     }
 
+
+    private static void fnt_equipos_m2() {
+        String codigo = JOptionPane.showInputDialog("Serial");
+
+        blm_sw = false;
+        pos = 0;
+
+        for (int i = 0; i < int_posiciones; i++) {
+            if (codigo.equals(equipos[i].getSerial())) {
+                blm_sw = true;
+                pos = i;
+                break;
+            }
+
+            if (blm_sw == false) {
+                JOptionPane.showMessageDialog(null, "No se encontraron registros","Consultar",JOptionPane.ERROR_MESSAGE);
+            }else {
+                JOptionPane.showMessageDialog(null, "Nombre:" + equipos[i].getNombre() + 
+                "\nCaracteristicas:" + equipos[i].getCaracteristicas() + "\nRed:" + equipos[i].getRed() + "\nProgramas" + equipos[i].getProgramas() +
+                "\nNúmero:" + equipos[i].getNumero() + "\nUbicación:" + equipos[i].getUbicacion());
+            }
+        }
+        
+    }
+
     private static void fnt_menu_equipos(boolean m_equipos) {
         while (m_equipos == true){
             
@@ -36,6 +61,9 @@ public class app_inventariosala {
             }
             if (eq == 1){
                 fnt_equipos_m1();
+            }
+            if (eq == 2){
+                fnt_equipos_m2();
             }
         }
     
